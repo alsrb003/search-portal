@@ -1,26 +1,109 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import Body from '@/components/Body'
+import Board from '@/components/Board'
+import Person from '@/components/Person';
+import { store } from '../store/index.js';
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/ematesearch/allsearch'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/ematesearch',
+    redirect: '/ematesearch/allsearch'
+  },
+  {
+    path: '/ematesearch/allsearch',
+    name: 'Body',
+    component: Body
+  },
+  {
+    path: '/ematesearch/person',
+    name: 'Person',
+    component: Person,
+    children: [
+      {
+        name: 'page',
+        path: 'page',
+        // component: BoardList,
+        // props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("pageSetting", { routeTo: routeTo })
+          .then(() => {
+            next('/ematesearch/' + store.state.data.class);
+          })
+          .catch(() => new Error("failed to fetch boardlist"));
+        },
+      },
+    ]
+  },
+  {
+    path: '/ematesearch/board',
+    name: 'Board',
+    component: Board,
+    children: [
+      {
+        name: 'page',
+        path: 'page',
+        // component: BoardList,
+        // props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("pageSetting", { routeTo: routeTo })
+            .then(() => {
+              next('/ematesearch/' + store.state.data.class);
+            })
+            .catch(() => new Error("failed to fetch boardlist"));
+        },
+      },
+    ]
+  },
+  {
+    path: '/ematesearch/approval',
+    name: 'Board',
+    component: Board,
+    children: [
+      {
+        name: 'page',
+        path: 'page',
+        // component: BoardList,
+        // props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("pageSetting", { routeTo: routeTo })
+            .then(() => {
+              next('/ematesearch/' + store.state.data.class);
+            })
+            .catch(() => new Error("failed to fetch boardlist"));
+        },
+      },
+    ]
+  },
+  {
+    path: '/ematesearch/mail',
+    name: 'Board',
+    component: Board,
+    children: [
+      {
+        name: 'page',
+        path: 'page',
+        // component: BoardList,
+        // props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("pageSetting", { routeTo: routeTo })
+          .then(() => {
+            next('/ematesearch/' + store.state.data.class);
+          })
+          .catch(() => new Error("failed to fetch boardlist"));
+        },
+      },
+    ]
+  },
 ]
 
-const router = new VueRouter({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes

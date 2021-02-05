@@ -1,0 +1,32 @@
+{
+  "category": {
+    "allsearch": "allsearch",
+    "person": "person",
+    "approval": "approval",
+    "board": "board",
+    "mail": "mail"
+  },
+  "url": "http://kms.saerom.co.kr",
+  "defaultSize": 10,
+  "defaultHomeSize": 3,
+  "defaultSort": "desc",
+  "what": [
+    "created",
+    "",
+    "all"
+  ],
+  "options": [
+    {
+      "text": "한국어",
+      "value": "ko"
+    },
+    {
+      "text": "영어",
+      "value": "en"
+    }
+  ],
+  "defaultPageNum": 1,
+  "defaultNowPage": 1,
+  "defaultPageCnt": 10,
+  "timezone": -540
+}
