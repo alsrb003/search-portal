@@ -7,7 +7,7 @@
         <ul class="boardList">
           <span v-if="sortdata[category]">
             <li v-for="(data, index) in sortdata[category].data" :key="index">
-              <a :href="url + data.originalurl" target="blank">
+              <a :href="url[category].url + data.originalurl" target="blank">
                 <span class="location">{{ data.nav }}</span>
                 <span class="subject">{{ data.subject }}</span>
                 <span class="write"
@@ -124,7 +124,7 @@ export default {
       category: (state) => state.data.class,
     }),
     url() {
-      return config.url;
+      return config.category;
     },
   },
   components: {

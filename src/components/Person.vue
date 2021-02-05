@@ -8,10 +8,10 @@
             <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
             <li v-for="(data, index) in personData.data" :key="index">
               <!-- <router-link :to="`/detail/${index} person`"> -->
-              <a :href="url + data.originalurl" target="blank">
+              <a :href="url.person.url + data.originalurl" target="blank">
                 <div class="profile">
                   <div class="thumb">
-                    <img :src="url + data.photo" alt="" />
+                    <img :src="url.person.url + data.photo" alt="" />
                   </div>
                   <div class="name kor">{{ data.subject }}</div>
                 </div>
@@ -116,7 +116,7 @@ export default {
       category: (state) => state.data.class,
     }),
     url() {
-      return config.url;
+      return config.category;
     },
   },
   components: {

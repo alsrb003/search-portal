@@ -1,12 +1,26 @@
 {
   "category": {
-    "allsearch": "allsearch",
-    "person": "person",
-    "approval": "approval",
-    "board": "board",
-    "mail": "mail"
+    "allsearch": {
+      "id": "allsearch",
+      "url": "http://kms.saerom.co.kr"
+    },
+    "person": {
+      "id": "person",
+      "url": "http://kms.saerom.co.kr"
+    },
+    "approval": {
+      "id": "approval",
+      "url": "http://kms.saerom.co.kr"
+    },
+    "board": {
+      "id": "board",
+      "url": "http://ktop.saerom.co.kr"
+    },
+    "mail": {
+      "id": "mail",
+      "url": "http://ktop.saerom.co.kr"
+    }
   },
-  "url": "http://kms.saerom.co.kr",
   "defaultSize": 10,
   "defaultHomeSize": 3,
   "defaultSort": "desc",

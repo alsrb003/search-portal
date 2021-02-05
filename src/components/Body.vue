@@ -18,9 +18,9 @@
             <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
             <li v-for="(data, index) in personData.data" :key="index">
               <!-- <router-link :to="`/detail/${index} person`"> -->
-              <a :href="url + data.originalurl" target="blank">
+              <a :href="url.person.url + data.originalurl" target="blank">
                 <span class="thumb"
-                  ><img :src="url + data.photo" alt="" />
+                  ><img :src="url.person.url + data.photo" alt="" />
                 </span>
                 <span class="name kor">{{ data.subject }}</span>
                 <span class="team">{{ setWord(data.dept) }}</span>
@@ -42,18 +42,18 @@
           v-for="(cate, index) in category"
           :key="index"
         >
-          <span v-if="cate !== 'person' && cate !== 'allsearch'">
+          <span v-if="cate.id !== 'person' && cate.id !== 'allsearch'">
             <h2 class="boardTitle">
-              <router-link :to="`/ematesearch/${cate}`">
-                <span @click="setClass(cate)"> {{ language[cate] }} </span>
+              <router-link :to="`/ematesearch/${cate.id}`">
+                <span @click="setClass(cate.id)"> {{ language[cate.id] }} </span>
               </router-link>
             </h2>
             <ul class="boardList">
-              <span v-if="sortdata[cate]">
+              <span v-if="sortdata[cate.id]">
                 <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
-                <li v-for="(data, index) in sortdata[cate].data" :key="index">
+                <li v-for="(data, index) in sortdata[cate.id].data" :key="index">
                   <!-- <router-link :to="`/detail/${index} approval`"> -->
-                  <a :href="url + data.originalurl" target="blank">
+                  <a :href="url[cate.id].url + data.originalurl" target="blank">
                     <span class="location">{{ setWord(data.dept) }}</span>
                     <span class="subject">{{ data.subject }}</span>
                     <span class="write"
@@ -72,8 +72,8 @@
               </span>
             </ul>
           </span>
-          <router-link :to="`/ematesearch/${cate}`" class="btnMore">
-            <span @click="setClass(cate)"> MORE </span>
+          <router-link :to="`/ematesearch/${cate.id}`" class="btnMore">
+            <span @click="setClass(cate.id)"> MORE </span>
           </router-link>
         </section>
       </span>
@@ -104,7 +104,7 @@ export default {
       return config.category;
     },
     url() {
-      return config.url;
+      return config.category;
     },
   },
   methods: {
