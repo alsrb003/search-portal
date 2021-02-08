@@ -17,11 +17,11 @@
             <li v-for="(data, index) in personData.data" :key="index">
               <!-- <router-link :to="`/detail/${index} person`"> -->
               <a :href="url.person.url + data.originalurl" target="blank">
-                <span class="thumb"
-                  ><img :src="url.person.url + data.photo" alt="" />
+                <span class="thumb">
+                  <img :src="url.person.url + data.photo" alt="" />
                   <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
                 </span>
-                <span class="name kor">{{ data.subject }}</span>
+                <span class="name kor">{{ setWord(data.subject) }}</span>
                 <span class="team">{{ setWord(data.dept) }}</span>
               </a>
               <!-- </router-link> -->
@@ -133,7 +133,7 @@ export default {
         word == null ||
         word == ""
       ) {
-        return word;
+        return "";
       } else {
         if (word.includes(this.language.locale)) {
           if (JSON.parse(word)[this.language.locale].length > 0) {

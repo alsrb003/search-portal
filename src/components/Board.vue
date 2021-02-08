@@ -151,7 +151,7 @@ export default {
         word == null ||
         word == ""
       ) {
-        return word;
+        return "";
       } else {
         if (word.includes(this.language.locale)) {
           if (JSON.parse(word)[this.language.locale].length > 0) {

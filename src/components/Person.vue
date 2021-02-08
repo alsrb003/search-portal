@@ -13,11 +13,11 @@
                   <div class="thumb">
                     <img :src="url.person.url + data.photo" alt="" />
                   </div>
-                  <div class="name kor">{{ data.subject }}</div>
+                  <div class="name kor">{{ setWord(data.subject) }}</div>
                 </div>
                 <div class="dept">{{ setWord(data.dept) }}</div>
                 <div class="pos">
-                  <span>직책: {{ data.jobposition }}</span>
+                  <span>직책: {{ setWord(data.jobposition) }}</span>
                 </div>
                 <div class="contact">
                   <span>회사: {{ data.companytel }}</span>
@@ -27,7 +27,7 @@
                   <span>E-mail: {{ data.email }}</span>
                 </div>
                 <div class="work">
-                  <span>담당업무: {{ data.job }}</span>
+                  <span>담당업무: {{ setWord(data.job) }}</span>
                 </div>
               </a>
               <!-- </router-link> -->
@@ -125,12 +125,20 @@ export default {
   },
   methods: {
     setWord(word) {
-      if (word.includes(this.language.locale)) {
-        if (JSON.parse(word)[this.language.locale].length > 0) {
-          word = JSON.parse(word)[this.language.locale];
+      if (
+        typeof word == "undefined" ||
+        typeof word == undefined ||
+        word == null ||
+        word == ""
+      ) {
+        return "";
+      } else {
+        if (word.includes(this.language.locale)) {
+          if (JSON.parse(word)[this.language.locale].length > 0) {
+            word = JSON.parse(word)[this.language.locale];
+          }
         }
       }
-
       return word;
     },
   },
