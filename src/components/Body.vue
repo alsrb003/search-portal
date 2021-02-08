@@ -8,9 +8,7 @@
             <span class="cnt" v-if="this.sortdata.person">
               {{ this.sortdata.person.total_cnt }}
             </span>
-            <span class="cnt" v-else>
-              0
-            </span>
+            <span class="cnt" v-else> 0 </span>
           </router-link>
         </h2>
         <ul class="employeeList">
@@ -21,6 +19,7 @@
               <a :href="url.person.url + data.originalurl" target="blank">
                 <span class="thumb"
                   ><img :src="url.person.url + data.photo" alt="" />
+                  <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
                 </span>
                 <span class="name kor">{{ data.subject }}</span>
                 <span class="team">{{ setWord(data.dept) }}</span>
@@ -45,25 +44,33 @@
           <span v-if="cate.id !== 'person' && cate.id !== 'allsearch'">
             <h2 class="boardTitle">
               <router-link :to="`/ematesearch/${cate.id}`">
-                <span @click="setClass(cate.id)"> {{ language[cate.id] }} </span>
+                <span @click="setClass(cate.id)">
+                  {{ language[cate.id] }}
+                </span>
               </router-link>
             </h2>
             <ul class="boardList">
               <span v-if="sortdata[cate.id]">
                 <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
-                <li v-for="(data, index) in sortdata[cate.id].data" :key="index">
+                <li
+                  v-for="(data, index) in sortdata[cate.id].data"
+                  :key="index"
+                >
                   <!-- <router-link :to="`/detail/${index} approval`"> -->
                   <a :href="url[cate.id].url + data.originalurl" target="blank">
-                    <span class="location">{{ setWord(data.dept) }}</span>
+                    <span class="location">{{ setWord(data.nav) }}</span>
                     <span class="subject">{{ data.subject }}</span>
                     <span class="write"
-                      >{{ setWord(data.author) }} /
+                      >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
                       <span class="date">{{
                         getTime(data.created)
                       }}</span></span
                     >
                     <span class="content">{{ data.body }}</span>
-                    <span class="attch"
+                    <span
+                      class="attch"
+                      v-if="data.attached !== ''"
+                      :title="atta(data.attached)"
                       ><span class="hidden">첨부파일</span></span
                     >
                   </a>
@@ -72,9 +79,11 @@
               </span>
             </ul>
           </span>
-          <router-link :to="`/ematesearch/${cate.id}`" class="btnMore">
-            <span @click="setClass(cate.id)"> MORE </span>
-          </router-link>
+          <span @click="setClass(cate.id)">
+            <router-link :to="`/ematesearch/${cate.id}`" class="btnMore"
+              >MORE
+            </router-link></span
+          >
         </section>
       </span>
     </div>
@@ -118,12 +127,30 @@ export default {
       return localTime;
     },
     setWord(word) {
-      if (word.includes(this.language.locale)) {
-        if (JSON.parse(word)[this.language.locale].length > 0) {
-          word = JSON.parse(word)[this.language.locale];
+      if (
+        typeof word == "undefined" ||
+        typeof word == undefined ||
+        word == null ||
+        word == ""
+      ) {
+        return word;
+      } else {
+        if (word.includes(this.language.locale)) {
+          if (JSON.parse(word)[this.language.locale].length > 0) {
+            word = JSON.parse(word)[this.language.locale];
+          }
         }
       }
       return word;
+    },
+    atta(list) {
+      var text = "";
+      if (Array.isArray(list)) {
+        for (var i = 0; i < list.length; i++) {
+          text += list[i] + "\n";
+        }
+      }
+      return text;
     },
   },
 };

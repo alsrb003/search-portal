@@ -72,8 +72,6 @@ export default {
 
         return Search(data)
             .then(response => {
-                console.log('검색 결과 : ', response);
-
                 commit('SearchData', { res: response.data.data, word: word, page: pagenum, replaceword: data.searchword });
                 commit('setList', { popular: response.data.popular, relation: response.data.relation });
 
@@ -185,7 +183,6 @@ export default {
         if (query.name) {
             var nowpagechange = 1;
 
-            console.log(page, "page와이라노,,");
             if (query.name == 'prev' && nowpage > 1) {
                 page = (nowpage - 2) * state.perpagecnt + config.defaultPageNum;
                 nowpagechange = nowpage - 1;

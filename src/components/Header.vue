@@ -77,7 +77,10 @@
           </span> -->
 
           <span v-for="(item, index) in category" :key="index">
-            <li :class="{ on: CategoryOn(item.id) }" @click="CategoryBtn(item.id)">
+            <li
+              :class="{ on: CategoryOn(item.id) }"
+              @click="CategoryBtn(item.id)"
+            >
               <router-link :to="`/ematesearch/${item.id}`">
                 {{ language[item.id] }}
               </router-link>
@@ -353,33 +356,36 @@ export default {
   },
   created() {
     // 라우터로 쿼리스트링 받아오기
-    var q = this.$route.query.q;
+    // var q = this.$route.query.q;
 
     // 쿼리스트링 넘기기
     //  <router-link :to="{path:'ematesearch/person', query:{text:'다시'}}">
 
-    if (
-      typeof q == "undefined" ||
-      typeof q == undefined ||
-      q == null ||
-      q == ""
-    ) {
-      return;
-    }
-    q = q.trim();
-    this.$store.dispatch("SearchWord", { word: q });
-
-    // let uri = window.location.href.split("?");
-    // if (uri.length == 2) {
-    //   let vars = uri[1].split("&");
-    //   let getVars = {};
-    //   let tmp = "";
-    //   vars.forEach(function (v) {
-    //     tmp = v.split("=");
-    //     if (tmp.length == 2) getVars[tmp[0]] = tmp[1];
-    //   });
-    //   this.$store.dispatch("SearchWord", { word: q });
+    // if (
+    //   typeof q == "undefined" ||
+    //   typeof q == undefined ||
+    //   q == null ||
+    //   q == ""
+    // ) {
+    //   return;
     // }
+    // q = q.trim();
+    // this.$store.dispatch("SearchWord", { word: q });
+
+    let uri = window.location.href.split("?");
+    if (uri.length == 2) {
+      let vars = uri[1].split("&");
+      let getVars = {};
+      let tmp = "";
+      vars.forEach(function (v) {
+        tmp = v.split("=");
+        if (tmp.length == 2) getVars[tmp[0]] = tmp[1];
+      });
+
+      getVars.q = decodeURI(getVars.q);
+      
+      this.$store.dispatch("SearchWord", { word: getVars.q });
+    }
   },
 };
 </script>

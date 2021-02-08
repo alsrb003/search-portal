@@ -8,14 +8,19 @@
           <span v-if="sortdata[category]">
             <li v-for="(data, index) in sortdata[category].data" :key="index">
               <a :href="url[category].url + data.originalurl" target="blank">
-                <span class="location">{{ data.nav }}</span>
+                <span class="location">{{ setWord(data.nav) }}</span>
                 <span class="subject">{{ data.subject }}</span>
                 <span class="write"
-                  >{{ setWord(data.author) }} / {{ setWord(data.dept) }}
+                  >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
                   <span class="date">{{ getTime(data.created) }}</span></span
                 >
                 <span class="content">{{ data.body }}</span>
-                <span class="attch"><span class="hidden">첨부파일</span></span>
+                <span
+                  class="attch"
+                  v-if="data.attached !== ''"
+                  :title="atta(data.attached)"
+                  ><span class="hidden">첨부파일</span></span
+                >
               </a>
             </li>
           </span>
@@ -140,13 +145,32 @@ export default {
       return localTime;
     },
     setWord(word) {
-      if (word.includes(this.language.locale)) {
-        if (JSON.parse(word)[this.language.locale].length > 0) {
-          word = JSON.parse(word)[this.language.locale];
+      if (
+        typeof word == "undefined" ||
+        typeof word == undefined ||
+        word == null ||
+        word == ""
+      ) {
+        return word;
+      } else {
+        if (word.includes(this.language.locale)) {
+          if (JSON.parse(word)[this.language.locale].length > 0) {
+            word = JSON.parse(word)[this.language.locale];
+          }
         }
       }
-
       return word;
+    },
+    atta(list) {
+      var text = "";
+      if (Array.isArray(list)) {
+        for (var i = 0; i < list.length; i++) {
+          text += list[i] + "\n";
+        }
+      } else {
+        text = list;
+      }
+      return text;
     },
   },
   // created() {

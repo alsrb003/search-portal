@@ -1,8 +1,7 @@
 {
   "category": {
     "allsearch": {
-      "id": "allsearch",
-      "url": "http://kms.saerom.co.kr"
+      "id": "allsearch"
     },
     "person": {
       "id": "person",
