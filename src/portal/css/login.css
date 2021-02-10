@@ -96,9 +96,9 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 .formUtil .btnReset {display:inline-block;font-size:12px;line-height:16px;font-weight:bold;color:#fff;vertical-align:top}
 .formCheckbox {overflow:hidden;display:inline-block;position:relative;vertical-align:top}
 .formCheckbox input {position:absolute;left:-9999px}
-.formCheckbox label {displa y:block;padding:0 0 0 22px;font-size:12px;line-height:16px;font-weight:bold;color:#fff;background:url(../images/login/ic_checkbox.png) no-repeat;cursor:pointer}
+.formCheckbox label {display:block;padding:0 0 0 22px;font-size:12px;line-height:16px;font-weight:bold;color:#fff;background:url(../images/login/ic_checkbox.png) no-repeat;cursor:pointer}
 .formCheckbox input:checked ~ label {background-position:0 -16px}
-.loginForm .btnLogin {overflow:hidden;border-radius:3px;width:100%;height:45px;font-size:16px;line-height:45px;color:#fff;font-weight:bold;text-align:center;background:#93c339}
+.loginForm .btnLogin {overflow:hidden;border-radius:3px;width:100%;height:45px;font-size:16px;line-height:45px;color:#fff;font-weight:bold;text-align:center;background:#655da7}
 .loginForm .softwareList {margin-top:66px}
 .loginForm .softwareList ul {overflow:hidden;margin:0 -10px;}
 .loginForm .softwareList li {float:left;width:33.3333%;font-size:13px;line-height:19px;color:#fff;text-align:center}

@@ -55,7 +55,7 @@
 .portletTabMenu li {padding:4px 0}
 .portletTabMenu li a {display:block;font-size:14px;line-height:22px;font-weight:bold;color:#666}
 .portletTabMenu li a img {margin-top:-3px;vertical-align:middle}
-.portletTabMenu li.on a {color:#7dbc04}
+.portletTabMenu li.on a {color:#655da7}
 .portletTabContent li {border-top:1px solid #ebeef3}
 .portletTabContent li:first-child {border-top:0}
 .portletTabContent li a {display:block;position:relative;padding:9px 184px 9px 24px;font-size:13px;line-height:20px;color:#4f4f4f}
@@ -87,7 +87,7 @@
 .portletAppr .apprList li a:hover {background:#f6f6f6}
 .portletAppr .apprList .company {display:block;position:absolute;top:50%;left:19px;margin-top:-11px;padding:0 6px;border:1px solid #ebeef3;border-radius:3px;font-size:12px;line-height:21px;font-weight:bold;color:#666;text-align:center;background:#fff}
 .portletAppr .apprList .company.c01 {border-color:#00aeef}
-.portletAppr .apprList .company.c02 {border-color:#a3d430}
+.portletAppr .apprList .company.c02 {border-color:#655da7}
 .portletAppr .apprList .company.c03 {border-color:#d5100e}
 .portletAppr .apprList .subject {overflow:hidden;display:block;text-overflow:ellipsis;white-space:nowrap}
 
@@ -110,7 +110,7 @@
 .portletFamilyEvent {height:228px}
 .portletFamilyEvent .portletBody {overflow:hidden}
 .portletFamilyEvent .slideBox {float:left;position:relative;width:50%}
-.portletFamilyEvent .slideTitle {padding:0 20px;height:36px;font-size:15px;line-height:36px;font-weight:bold;color:#7dbc04;background:#f6f6f6}
+.portletFamilyEvent .slideTitle {padding:0 20px;height:36px;font-size:15px;line-height:36px;font-weight:bold;color:#655da7;background:#f6f6f6}
 .portletFamilyEvent .bx-slider li a {display:block;padding:38px 0 0 116px;height:145px;font-size:13px;line-height:23px;color:#666}
 .portletFamilyEvent .name {display:block}
 .portletFamilyEvent .name em {font-size:14px;font-weight:bold}
@@ -143,7 +143,7 @@
 .portlePersonal .myInfo .commute li:first-child {margin-left:0}
 .portlePersonal .myInfo .commute li em {display:inline-block;margin-right:2px;padding:0 6px;border-radius:6px;color:#fff;text-align:center;background:#d5100e;vertical-align:top}
 .portlePersonal .myInfo .commute li a {text-decoration:underline}
-.portlePersonal .myInfo .btnAttend {display:block;position:absolute;top:24px;right:14px;padding:4px 0;border-radius:3px;width:64px;font-size:12px;line-height:18px;color:#fff;text-align:center;background:#a3d430}
+.portlePersonal .myInfo .btnAttend {display:block;position:absolute;top:24px;right:14px;padding:4px 0;border-radius:3px;width:64px;font-size:12px;line-height:18px;color:#fff;text-align:center;background:#655da7}
 .portlePersonal .workInfo {margin:0 10px;border-bottom:1px solid #ebeef3}
 .portlePersonal .workInfo ul {overflow:hidden;padding:8px}
 .portlePersonal .workInfo li {float:left;width:50%;font-size:12px;line-height:24px;color:#666}
@@ -159,17 +159,17 @@
 /** Theme
 ===================================*/
 /* 1.게임빌 */
-.gamevil .portlePersonal .myInfo .commute li {color:#a3d430}
-.gamevil .portlePersonal .myInfo .commute li em {background:#a3d430}
-.gamevil .portlePersonal .workInfo li em {color:#a3d430}
-.gamevil .portlePersonal .holidayInfo dt {color:#a3d430}
+.gamevil .portlePersonal .myInfo .commute li {color:#655da7}
+.gamevil .portlePersonal .myInfo .commute li em {background:#655da7}
+.gamevil .portlePersonal .workInfo li em {color:#655da7}
+.gamevil .portlePersonal .holidayInfo dt {color:#655da7}
 .gamevil .portlePersonal .warningInfo:before {background:url(../images/ico_warning1.png) no-repeat}
-.gamevil .portletPlan .datepicker {color:#a3d430}
-.gamevil .portletPlan .planList .date.today {color:#a3d430}
-.gamevil .portletPlan .planList .time.current {border-color:#a3d430;color:#a3d430}
+.gamevil .portletPlan .datepicker {color:#655da7}
+.gamevil .portletPlan .planList .date.today {color:#655da7}
+.gamevil .portletPlan .planList .time.current {border-color:#655da7;color:#655da7}
 .gamevil .portletFamilyEvent .slideBirthday li a {background:url(../images/ico_birth1.png) no-repeat 32px 30px}
 .gamevil .portletFamilyEvent .slideEmployee li a {background:url(../images/ico_emp1.png) no-repeat 32px 30px}
-.gamevil .bx-wrapper .bx-pager.bx-default-pager a.active {background-color:#a3d430}
+.gamevil .bx-wrapper .bx-pager.bx-default-pager a.active {background-color:#655da7}
 
 /* 2.컴투스 */
 .com2s .mainBanner .bx-wrapper .bx-pager.bx-default-pager a.active {background:#d5100e}
@@ -204,16 +204,16 @@
 
 /* Common */
 .resultMessage {padding:30px 0;font-size:18px;line-height:24px;color:#000;text-align:center}
-.resultMessage .highlight {color:#7baf18}
+.resultMessage .highlight {color:#655da7}
 .resultSection {position:relative;margin-top:24px}
 .resultSection .title {padding:9px 0;font-size:16px;line-height:22px;font-weight:700;color:#252525}
-.resultSection .title .cnt {display:inline-block;margin-top:1px;border:1px solid #d2d2d2;border-radius:10px;padding:0 6px;font-size:13px;line-height:18px;color:#7baf18;text-align:center;vertical-align:top}
-.resultSection .boardTitle {border-bottom:2px solid #8cc819;padding:9px 0;font-size:19px;line-height:22px;font-weight:700;color:#333}
+.resultSection .title .cnt {display:inline-block;margin-top:1px;border:1px solid #d2d2d2;border-radius:10px;padding:0 6px;font-size:13px;line-height:18px;color:#655da7;text-align:center;vertical-align:top}
+.resultSection .boardTitle {border-bottom:2px solid #655da7;padding:9px 0;font-size:19px;line-height:22px;font-weight:700;color:#333}
 .resultSection .boardList {margin-top:4px}
 .resultSection .boardList li {padding:10px 0}
 .resultSection .boardList li a {display:block;position:relative;padding:8px 36px}
 .resultSection .boardList li a > span {overflow:hidden;display:block;font-weight:500}
-.resultSection .boardList li .location {font-size:13px;line-height:20px;color:#7baf18}
+.resultSection .boardList li .location {font-size:13px;line-height:20px;color:#655da7}
 .resultSection .boardList li .subject {font-size:16px;line-height:30px;font-weight:700;color:#252525}
 .resultSection .boardList li .write {font-size:13px;line-height:20px;color:#575757}
 .resultSection .boardList li .write .date {font-size:12px;color:#787878}
@@ -238,4 +238,4 @@
 .departmentList li a {display:block;position:relative;border:1px solid #f0f0f0;padding:0 22px;height:104px;font-size:13px;line-height:18px;color:#575757}
 .departmentList li a > span {display:block}
 .departmentList li .dept {padding:12px 0 8px;font-size:14px;line-height:20px;font-weight:700;color:#252525}
-.departmentList li .dept:before {content:'';display:block;position:absolute;top:18px;left:10px;border-radius:50%;width:6px;height:6px;background:#8cc819}
+.departmentList li .dept:before {content:'';display:block;position:absolute;top:18px;left:10px;border-radius:50%;width:6px;height:6px;background:#655da7}

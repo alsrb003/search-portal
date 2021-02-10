@@ -9,12 +9,12 @@
             <li v-for="(data, index) in sortdata[category].data" :key="index">
               <a :href="url[category].url + data.originalurl" target="blank">
                 <span class="location">{{ setWord(data.nav) }}</span>
-                <span class="subject">{{ data.subject }}</span>
+                <span class="subject">{{ setWord(data.subject) }}</span>
                 <span class="write"
                   >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
                   <span class="date">{{ getTime(data.created) }}</span></span
                 >
-                <span class="content">{{ data.body }}</span>
+                <span class="content">{{ setWord(data.body) }}</span>
                 <span
                   class="attch"
                   v-if="data.attached !== ''"

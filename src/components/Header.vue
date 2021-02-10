@@ -240,8 +240,9 @@ export default {
   },
   methods: {
     CategoryOn(category) {
-      var id = this.$route.params.id;
-      if (id == category) return true;
+      // 카테고리에 따라서 하이라이트 주기
+      var id = this.$route.fullPath;
+      if (id == "/ematesearch/" + category) return true;
       else false;
     },
     btnSearch() {
@@ -355,6 +356,9 @@ export default {
     },
   },
   created() {
+    // 시작화면에서 전체검색에 하이라이트 주기
+    this.CategoryOn(this.category);
+
     // 라우터로 쿼리스트링 받아오기
     // var q = this.$route.query.q;
 
@@ -383,7 +387,7 @@ export default {
       });
 
       getVars.q = decodeURI(getVars.q);
-      
+
       this.$store.dispatch("SearchWord", { word: getVars.q });
     }
   },

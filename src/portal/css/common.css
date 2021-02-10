@@ -93,11 +93,11 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 .btn-primary.active,.btn-primary:active,.open>.dropdown-toggle.btn-primary{background-image:none}
 .btn-primary.disabled,.btn-primary.disabled.active,.btn-primary.disabled:active,.btn-primary.disabled:focus,.btn-primary.disabled:hover,.btn-primary[disabled],.btn-primary[disabled].active,.btn-primary[disabled]:active,.btn-primary[disabled]:focus,.btn-primary[disabled]:hover,fieldset[disabled] .btn-primary,fieldset[disabled] .btn-primary.active,fieldset[disabled] .btn-primary:active,fieldset[disabled] .btn-primary:focus,fieldset[disabled] .btn-primary:hover{background-color:#428bca;border-color:#357ebd}
 .btn-primary .badge{color:#428bca;background-color:#fff}
-.btn-success{color:#fff;background-color:#5cb85c;border-color:#4cae4c}
-.btn-success.active,.btn-success:active,.btn-success:focus,.btn-success:hover,.open>.dropdown-toggle.btn-success{color:#fff;background-color:#449d44;border-color:#398439}
+.btn-success{color:#fff;background-color:#655da7;border-color:#655da7}
+.btn-success.active,.btn-success:active,.btn-success:focus,.btn-success:hover,.open>.dropdown-toggle.btn-success{color:#fff;background-color:#655da7;border-color:#655da7}
 .btn-success.active,.btn-success:active,.open>.dropdown-toggle.btn-success{background-image:none}
-.btn-success.disabled,.btn-success.disabled.active,.btn-success.disabled:active,.btn-success.disabled:focus,.btn-success.disabled:hover,.btn-success[disabled],.btn-success[disabled].active,.btn-success[disabled]:active,.btn-success[disabled]:focus,.btn-success[disabled]:hover,fieldset[disabled] .btn-success,fieldset[disabled] .btn-success.active,fieldset[disabled] .btn-success:active,fieldset[disabled] .btn-success:focus,fieldset[disabled] .btn-success:hover{background-color:#5cb85c;border-color:#4cae4c}
-.btn-success .badge{color:#5cb85c;background-color:#fff}
+.btn-success.disabled,.btn-success.disabled.active,.btn-success.disabled:active,.btn-success.disabled:focus,.btn-success.disabled:hover,.btn-success[disabled],.btn-success[disabled].active,.btn-success[disabled]:active,.btn-success[disabled]:focus,.btn-success[disabled]:hover,fieldset[disabled] .btn-success,fieldset[disabled] .btn-success.active,fieldset[disabled] .btn-success:active,fieldset[disabled] .btn-success:focus,fieldset[disabled] .btn-success:hover{background-color:#655da7;border-color:#655da7}
+.btn-success .badge{color:#655da7;background-color:#fff}
 
 
 /** Print
@@ -130,7 +130,7 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 .topHeader .inner:after {content:'';display:table;clear:both}
 .topHeader .loginInfo {float:left;overflow:hidden;padding:5px 0}
 .topHeader .loginInfo .userInfo {float:left;display:block;margin-left:10px;font-size:12px;line-height:20px;color:#666}
-.topHeader .loginInfo .userInfo em {font-size:13px;font-weight:bold;color:#73ab07}
+.topHeader .loginInfo .userInfo em {font-size:13px;font-weight:bold;color:#655da7}
 .topHeader .loginInfo .btnLogout {float:left;display:block;margin-left:10px;padding:0 8px 0 24px;border-radius:3px;font-size:12px;line-height:20px;color:#fff;text-align:center;background:#b1b1b1 url(../images/ico_logout.png) no-repeat 9px 50%}
 .topHeader .familySite {float:right;position:relative;width:110px;z-index:9}
 .topHeader .familySite .btnToggle {display:block;position:relative;padding:6px 9px;border-left:1px solid #d1d8e4;border-right:1px solid #d1d8e4;height:30px;font-size:12px;line-height:18px;color:#666;text-align:left}
@@ -141,7 +141,7 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 .topHeader .familySite .tabMenu li {float:left;width:50%;font-size:12px;line-height:19px;color:#666;text-align:center}
 .topHeader .familySite .tabMenu li:last-child {background:url(../images/dot_v12.gif) no-repeat 0 50%}
 .topHeader .familySite .tabMenu li.on a {font-weight:bold;cursor:default}
-.topHeader .familySite .tabMenu li:first-child.on a {color:#7dbc04}
+.topHeader .familySite .tabMenu li:first-child.on a {color:#655da7}
 .topHeader .familySite .tabMenu li:last-child.on a {color:#d5100e}
 .topHeader .familySite .tabContent {display:none;margin-top:7px}
 .topHeader .familySite .tabContent li {padding:0 12px;font-size:12px;line-height:19px;color:#666}
@@ -156,7 +156,7 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 .bottomHeader .companyTabMenu li {float:left;border-right:1px solid #e5e5e5}
 .bottomHeader .companyTabMenu li a {display:block;padding:10px 0;border-bottom:2px solid transparent;width:130px;font-family:'notokr';font-size:14px;line-height:28px;color:#666;text-align:center}
 .bottomHeader .companyTabMenu li.small a {font-size:12px;line-height:14px}
-.bottomHeader .companyTabMenu li.on a {border-color:#a3d430}
+.bottomHeader .companyTabMenu li.on a {border-color:#655da7}
 .bottomHeader .keywordSearch {float:left;position:relative;width:108px;height:49px}
 .bottomHeader .keywordSearch input {padding:13px 28px 12px 10px;border:0;width:100%;height:49px}
 .bottomHeader .keywordSearch .btnSearch {overflow:hidden;position:absolute;top:6px;right:0;width:36px;height:36px;text-indent:-9999px;background:url(../images/ico_search.png) no-repeat}
@@ -180,7 +180,7 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 .mainMenu .ic-plan:before {background-position:0 -300px}
 .mainMenu .ic-msg:before {background-position:0 -360px}
 .mainMenu .ic-etc:before {background-position:0 -420px}
-.mainMenu .on .ic {border-color:#a3d430;background-color:#a3d430}
+.mainMenu .on .ic {border-color:#655da7;background-color:#655da7}
 .mainMenu .on .ic-home:before {background-position:-60px 0}
 .mainMenu .on .ic-mail:before {background-position:-60px -60px}
 .mainMenu .on .ic-appr:before {background-position:-60px -120px}
@@ -198,13 +198,13 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 .allMenu .menu .tit {padding:3px 8px 0;font-size:14px;line-height:38px;color:#333}
 .allMenu .menu ul {padding:18px 8px}
 .allMenu .menu li a {display:block;padding-left:8px;font-size:13px;line-height:28px;color:#333;letter-spacing:-0.025em;background:url(../images/ico_dot.gif) no-repeat 0 50%}
-.allMenu .menu:hover .tit {font-weight:bold;color:#7dbc04}
+.allMenu .menu:hover .tit {font-weight:bold;color:#655da7}
 .allMenu .menu li a:hover {color:#d5100e;text-decoration:underline}
 .is-open-allmenu .allMenu {display:block}
 
 /* Quick Menu */
 .quickMenu {overflow:hidden;position:absolute;top:251px;left:0;border:1px solid #dee3eb;border-radius:8px;transition:.2s linear}
-.quickMenu .title {width:73px;font-family:'notokr';font-size:11px;line-height:20px;color:#fff;text-align:center;background:#a3d430}
+.quickMenu .title {width:73px;font-family:'notokr';font-size:11px;line-height:20px;color:#fff;text-align:center;background:#655da7}
 .quickMenu ul {padding:8px 0 12px;background:#fff}
 .quickMenu a {display:block}
 .quickMenu .ic {display:block;margin:4px auto;width:36px;height:36px;background:url(../images/sp_ico_quick.png) no-repeat}
@@ -221,13 +221,13 @@ body {font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고�
 ===================================*/
 /* 1.게임빌 */
 .gamevil .quickMenu .ic {background-image:url(../images/sp_ico_quick1.png)}
-.gamevil .allMenu .menu li a:hover {color:#a3d430}
+.gamevil .allMenu .menu li a:hover {color:#655da7}
 
 /* 2.컴투스 */
 .com2s .topHeader .loginInfo .userInfo em {color:#d5100e}
 .com2s .bottomHeader .companyTabMenu li.on a {border-color:#d5100e}
 .com2s .mainMenu .on .ic {border-color:#d5100e;background:#d5100e}
-.com2s .mainMenu .cnt {background:#a3d430}
+.com2s .mainMenu .cnt {background:#655da7}
 .com2s .allMenu .menu:hover .tit {color:#d5100e}
 .com2s .allMenu .menu li a:hover {color:#d5100e}
 .com2s .quickMenu .title {background:#d5100e}

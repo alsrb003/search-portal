@@ -33,10 +33,10 @@ const routes = [
         // props: true,
         beforeEnter(routeTo, routeFrom, next) {
           store.dispatch("pageSetting", { routeTo: routeTo })
-          .then(() => {
-            next('/ematesearch/' + store.state.data.class);
-          })
-          .catch(() => new Error("failed to fetch boardlist"));
+            .then(() => {
+              next('/ematesearch/' + store.state.data.class);
+            })
+            .catch(() => new Error("failed to fetch boardlist"));
         },
       },
     ]
@@ -93,10 +93,10 @@ const routes = [
         // props: true,
         beforeEnter(routeTo, routeFrom, next) {
           store.dispatch("pageSetting", { routeTo: routeTo })
-          .then(() => {
-            next('/ematesearch/' + store.state.data.class);
-          })
-          .catch(() => new Error("failed to fetch boardlist"));
+            .then(() => {
+              next('/ematesearch/' + store.state.data.class);
+            })
+            .catch(() => new Error("failed to fetch boardlist"));
         },
       },
     ]
