@@ -21,7 +21,7 @@
                   <img :src="url.person.url + data.photo" alt="" />
                   <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
                 </span>
-                <span class="name kor">{{ setWord(data.subject) }}</span>
+                <span class="name kor">{{ data.subject }}</span>
                 <span class="team">{{ setWord(data.dept) }}</span>
               </a>
               <!-- </router-link> -->
