@@ -57,6 +57,11 @@ export default {
                 }
             }
         }
+
+        // data.searchwordarr 검색어 중복 제거
+        const set = new Set(data.searchwordarr);
+        data.searchwordarr = [...set];
+
         var pagenum = config.defaultPageNum - 1;
         data.pagenum = pagenum;
         data.term = state.term;
