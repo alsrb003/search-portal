@@ -6,7 +6,6 @@ const replaceString = {
             var cnt = 0;
             if (!(sortdata.total_cnt == undefined)) {
                 cnt = sortdata.total_cnt;
-                replaceword.count = ` ${replaceword.count} `
             }
             relanguage.searchresult =
                 relanguage.searchresult.replace(new RegExp(replaceword.count), ` ${cnt}`);
