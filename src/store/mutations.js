@@ -156,6 +156,12 @@ export default {
     // 검색시 인기검색어, 관련검색어 가져오기
     setList(state, { popular, relation }) {
         state.kList = popular;
+        
+        for (var k = 0; k < relation.length; k++) {
+            if (relation[k].key === state.data.searchword) {
+                relation.splice(k, 1);
+            }
+        }
         state.rList = relation;
 
         // 인기순 정렬
