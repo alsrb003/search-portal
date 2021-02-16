@@ -218,7 +218,7 @@
         </ul>
       </div>
     </div>
-    <p class="resultMessage" v-html="language.searchresult">
+    <p class="resultMessage" v-text="language.searchresult">
       <!-- 검색어 <span class="highlight">&quot;플랫폼&quot;</span>에 대한
         <span class="highlight">307</span>건의 검색 결과입니다. -->
     </p>

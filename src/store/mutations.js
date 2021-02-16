@@ -6,18 +6,18 @@ const replaceString = {
             var cnt = 0;
             if (!(sortdata.total_cnt == undefined)) {
                 cnt = sortdata.total_cnt;
-                replaceword.count = `<span class='highlight'>${replaceword.count}</span>`
+                replaceword.count = ` ${replaceword.count} `
             }
             relanguage.searchresult =
-                relanguage.searchresult.replace(new RegExp(replaceword.count), `<span class='highlight'>${cnt}</span>`);
+                relanguage.searchresult.replace(new RegExp(replaceword.count), ` ${cnt}`);
             // 검색어 변환
-            var rereplace = '&quot; &quot;';
+            var rereplace = '" "';
 
-            if (relanguage.searchresult.indexOf('&quot; &quot;') == -1) {
-                rereplace = `&quot;${data.searchwordarr}&quot;`;
+            if (relanguage.searchresult.indexOf('" "') == -1) {
+                rereplace = `"${data.searchwordarr}"`;
             }
             relanguage.searchresult =
-                relanguage.searchresult.replace(new RegExp(rereplace), `&quot;${data.searchwordarr}&quot;`);
+                relanguage.searchresult.replace(new RegExp(rereplace), `"${data.searchwordarr}"`);
         }
         return relanguage;
 
@@ -163,11 +163,6 @@ export default {
             }
         }
         state.rList = relation;
-
-        if(state.data.searchword === ""){
-            state.rList = {};
-        }
-
 
         // 인기순 정렬
         for (var i = 0; i < state.kList.length; i++) {
