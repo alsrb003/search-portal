@@ -19,7 +19,7 @@
                   class="attch"
                   v-if="data.attached !== ''"
                   :title="atta(data.attached)"
-                  ><span class="hidden">첨부파일</span></span
+                  ></span
                 >
               </a>
             </li>

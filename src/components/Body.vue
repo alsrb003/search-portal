@@ -71,8 +71,7 @@
                       class="attch"
                       v-if="data.attached !== ''"
                       :title="atta(data.attached)"
-                      ><span class="hidden">첨부파일</span></span
-                    >
+                    ></span>
                   </a>
                   <!-- </router-link> -->
                 </li>
@@ -149,6 +148,8 @@ export default {
         for (var i = 0; i < list.length; i++) {
           text += list[i] + "\n";
         }
+      } else {
+        text = list;
       }
       return text;
     },
