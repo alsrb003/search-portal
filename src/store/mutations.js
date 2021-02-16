@@ -164,6 +164,11 @@ export default {
         }
         state.rList = relation;
 
+        if(state.data.searchword === ""){
+            state.rList = {};
+        }
+
+
         // 인기순 정렬
         for (var i = 0; i < state.kList.length; i++) {
             for (var j = i + 1; j < state.kList.length; j++) {
