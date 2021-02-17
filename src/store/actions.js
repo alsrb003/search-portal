@@ -222,9 +222,9 @@ export default {
             page = query.page;
         }
         var size = config.defaultSize;
-        if (!(totalpage == 0) && page == totalpage + 1 && state.data.class) {
-            size = remainder;
-        }
+        // if (!(totalpage == 0) && page == totalpage + 1 && state.data.class) {
+        //     size = remainder;
+        // }
         page--;
 
         dispatch("PageSearch", { page: page, size: size });
