@@ -77,13 +77,12 @@
           </span> -->
 
           <span v-for="(item, index) in category" :key="index">
-            <li
-              :class="{ on: CategoryOn(item.id) }"
-              @click="CategoryBtn(item.id)"
-            >
-              <router-link :to="`/ematesearch/${item.id}`">
-                {{ language[item.id] }}
-              </router-link>
+            <li :class="{ on: CategoryOn(item.id) }">
+              <span @click="CategoryBtn(item.id)">
+                <router-link :to="`/ematesearch/${item.id}`">
+                  {{ language[item.id] }}
+                </router-link>
+              </span>
             </li>
           </span>
 
