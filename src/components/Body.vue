@@ -57,21 +57,27 @@
                   :key="index"
                 >
                   <!-- <router-link :to="`/detail/${index} approval`"> -->
-                  <a :href="url[cate.id].url + data.originalurl" target="blank">
-                    <span class="location">{{ setWord(data.nav) }}</span>
-                    <span class="subject">{{ data.subject }}</span>
-                    <span class="write"
-                      >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
-                      <span class="date">{{
-                        getTime(data.created)
-                      }}</span></span
-                    >
-                    <span class="content">{{ data.body }}</span>
+                  <a>
                     <span
                       class="attch"
                       v-if="data.attached !== ''"
                       :title="atta(data.attached)"
                     ></span>
+                    <a
+                      :href="url[cate.id].url + data.originalurl"
+                      target="blank"
+                      style="margin: 0; padding: 0"
+                    >
+                      <span class="location">{{ setWord(data.nav) }}</span>
+                      <span class="subject">{{ data.subject }}</span>
+                      <span class="write"
+                        >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
+                        <span class="date">{{
+                          getTime(data.created)
+                        }}</span></span
+                      >
+                      <span class="content">{{ data.body }}</span>
+                    </a>
                   </a>
                   <!-- </router-link> -->
                 </li>

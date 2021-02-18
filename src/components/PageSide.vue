@@ -4,9 +4,7 @@
       <h2>{{ language.associatedsearchterm }}</h2>
       <ol class="relatedList" v-if="rList.length > 0">
         <li v-for="(item, index) in this.rList" :key="index">
-          <a href="#" class="keyword" @click="keywordSearch(item.key)">
-            <pre>{{ item.key }}</pre>
-          </a>
+          <pre><font style="font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고딕','맑은고딕','Malgun Gothic';"><a href="#" class="keyword" @click="keywordSearch(item.key)">{{ item.key }}</a></font></pre>
           <a class="btnDel" @click="deleteKeyword(index)"
             ><span class="hidden">삭제</span></a
           >
@@ -32,10 +30,10 @@
         v-if="kList.length > 0"
       >
         <li v-for="(item, index) in kList" :key="index">
-          <a href="#" v-if="index < 5"
+          <a v-if="index < 5"
             ><em class="num">{{ index + 1 }}</em
             ><span class="keyword" @click="keywordSearch(item.key)">
-              <pre>{{ item.key }}</pre>
+              <pre><font style="font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고딕','맑은고딕','Malgun Gothic';"><a href="#" class="keyword" @click="keywordSearch(item.key)">{{ item.key }}</a></font></pre>
             </span></a
           >
         </li>
