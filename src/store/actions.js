@@ -34,7 +34,15 @@ export default {
             });
     },
     //검색
-    SearchWord({ state, commit, dispatch }, { word }) {
+    SearchWord({ state, commit, dispatch }, { word, category }) {
+        if (typeof category == "undefined" ||
+            typeof category == undefined ||
+            category == null ||
+            category == "") {
+            // empty
+        } else {
+            state.data.class = category;
+        }
         state.tf = true;
         var data = state.data;
         if (word !== undefined) {

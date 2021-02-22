@@ -79,7 +79,9 @@
           <span v-for="(item, index) in category" :key="index">
             <li :class="{ on: CategoryOn(item.id) }">
               <span @click="CategoryBtn(item.id)">
-                <router-link :to="`/ematesearch/${item.id}`">
+                <router-link
+                  :to="`/ematesearch/${item.id}?q=${data.searchword}`"
+                >
                   {{ language[item.id] }}
                 </router-link>
               </span>
@@ -240,14 +242,18 @@ export default {
   methods: {
     CategoryOn(category) {
       // 카테고리에 따라서 하이라이트 주기
-      var id = this.$route.fullPath;
-      if (id == "/ematesearch/" + category) return true;
+      var fullPath = this.$route.fullPath.split("/");
+      var path = fullPath[fullPath.length - 1].split("?");
+      if (path[0] == category) return true;
       else false;
     },
     btnSearch() {
       var word = this.data.searchword;
       word = word.trim();
-      this.$store.dispatch("SearchWord", { word: word });
+      this.$store.dispatch("SearchWord", {
+        word: word,
+        category: this.data.class,
+      });
     },
     CategoryBtn(category) {
       this.$store.dispatch("BigCategory", category);
@@ -387,8 +393,24 @@ export default {
 
       getVars.q = decodeURI(getVars.q);
 
-      this.$store.dispatch("SearchWord", { word: getVars.q });
+      var fullPath = uri[0].split("/");
+      var path = fullPath[fullPath.length - 1].split("?");
+      this.$store.dispatch("SearchWord", {
+        word: getVars.q,
+        category: path[0],
+      });
     }
+  },
+  watch: {
+    // to, from
+    $route(to) {
+      var fullPath = to.path.split("/");
+      var path = fullPath[fullPath.length - 1].split("?");
+      this.$store.dispatch("SearchWord", {
+        word: this.$route.query.q,
+        category: path[0],
+      });
+    },
   },
 };
 </script>

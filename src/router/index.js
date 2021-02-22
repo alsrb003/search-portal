@@ -34,7 +34,7 @@ const routes = [
         beforeEnter(routeTo, routeFrom, next) {
           store.dispatch("pageSetting", { routeTo: routeTo })
             .then(() => {
-              next('/ematesearch/' + store.state.data.class);
+              next('/ematesearch/' + store.state.data.class + '?q=' + store.state.data.searchword);
             })
             .catch(() => new Error("failed to fetch boardlist"));
         },
@@ -54,7 +54,7 @@ const routes = [
         beforeEnter(routeTo, routeFrom, next) {
           store.dispatch("pageSetting", { routeTo: routeTo })
             .then(() => {
-              next('/ematesearch/' + store.state.data.class);
+              next('/ematesearch/' + store.state.data.class + '?q=' + store.state.data.searchword);
             })
             .catch(() => new Error("failed to fetch boardlist"));
         },
@@ -74,7 +74,7 @@ const routes = [
         beforeEnter(routeTo, routeFrom, next) {
           store.dispatch("pageSetting", { routeTo: routeTo })
             .then(() => {
-              next('/ematesearch/' + store.state.data.class);
+              next('/ematesearch/' + store.state.data.class + '?q=' + store.state.data.searchword);
             })
             .catch(() => new Error("failed to fetch boardlist"));
         },
@@ -94,7 +94,7 @@ const routes = [
         beforeEnter(routeTo, routeFrom, next) {
           store.dispatch("pageSetting", { routeTo: routeTo })
             .then(() => {
-              next('/ematesearch/' + store.state.data.class);
+              next('/ematesearch/' + store.state.data.class + '?q=' + store.state.data.searchword);
             })
             .catch(() => new Error("failed to fetch boardlist"));
         },

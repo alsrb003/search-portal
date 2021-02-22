@@ -3,7 +3,7 @@
     <div class="pageContent">
       <section class="resultSection">
         <h2 class="title">
-          <router-link :to="`/ematesearch/person`">
+          <router-link :to="`/ematesearch/person?q=${data.searchword}`">
             <span @click="setClass('person')"> {{ language.person }} </span>
             <span class="cnt" v-if="this.sortdata.person">
               {{ this.sortdata.person.total_cnt }}
@@ -29,7 +29,10 @@
           </span>
         </ul>
         <span @click="setClass('person')">
-          <router-link :to="`/ematesearch/person`" class="btnMore">
+          <router-link
+            :to="`/ematesearch/person?q=${data.searchword}`"
+            class="btnMore"
+          >
             MORE
           </router-link>
         </span>
@@ -43,7 +46,7 @@
         >
           <span v-if="cate.id !== 'person' && cate.id !== 'allsearch'">
             <h2 class="boardTitle">
-              <router-link :to="`/ematesearch/${cate.id}`">
+              <router-link :to="`/ematesearch/${cate.id}?q=${data.searchword}`">
                 <span @click="setClass(cate.id)">
                   {{ language[cate.id] }}
                 </span>
@@ -85,7 +88,9 @@
             </ul>
           </span>
           <span @click="setClass(cate.id)">
-            <router-link :to="`/ematesearch/${cate.id}`" class="btnMore"
+            <router-link
+              :to="`/ematesearch/${cate.id}?q=${data.searchword}`"
+              class="btnMore"
               >MORE
             </router-link></span
           >
@@ -113,6 +118,7 @@ export default {
       approData: (state) => state.approData,
       boardData: (state) => state.boardData,
       personData: (state) => state.personData,
+      data: (state) => state.data,
     }),
     category() {
       return config.category;

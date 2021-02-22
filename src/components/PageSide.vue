@@ -3,8 +3,8 @@
     <section class="asideSection">
       <h2>{{ language.associatedsearchterm }}</h2>
       <ol class="relatedList" v-if="rList.length > 0">
-        <li v-for="(item, index) in this.rList" :key="index">
-          <pre><font style="font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고딕','맑은고딕','Malgun Gothic';"><a href="#" class="keyword" @click="keywordSearch(item.key)">{{ item.key }}</a></font></pre>
+        <li v-for="(item, index) in rList" :key="index">
+          <pre><font style="font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고딕','맑은고딕','Malgun Gothic';"><router-link :to="`/ematesearch/${data.class}?q=${item.key}`" class="keyword" @click="keywordSearch(item.key)">{{ item.key }}</router-link></font></pre>
           <a class="btnDel" @click="deleteKeyword(index)"
             ><span class="hidden">삭제</span></a
           >
@@ -33,7 +33,7 @@
           <a v-if="index < 5"
             ><em class="num">{{ index + 1 }}</em
             ><span class="keyword" @click="keywordSearch(item.key)">
-              <pre><font style="font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고딕','맑은고딕','Malgun Gothic';"><a href="#" class="keyword" @click="keywordSearch(item.key)">{{ item.key }}</a></font></pre>
+              <pre><font style="font-family:'Apple SD Gothic Neo','Apple Gothic','NanumGothic','나눔고딕','맑은고딕','Malgun Gothic';"><router-link :to="`/ematesearch/${data.class}?q=${item.key}`" class="keyword" @click="keywordSearch(item.key)">{{ item.key }}</router-link></font></pre>
             </span></a
           >
         </li>
@@ -52,6 +52,7 @@ export default {
       kList: (state) => state.kList,
       rList: (state) => state.rList,
       term: (state) => state.term,
+      data: (state) => state.data,
     }),
   },
   created() {
