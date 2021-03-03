@@ -8,28 +8,54 @@
             <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
             <li v-for="(data, index) in personData.data" :key="index">
               <!-- <router-link :to="`/detail/${index} person`"> -->
-              <a :href="url.person.url + data.originalurl" target="blank">
-                <div class="profile">
-                  <div class="thumb">
-                    <img :src="url.person.url + data.photo" alt="" />
+              <span v-if="data.originalurl !== ''">
+                <a :href="url.person.url + data.originalurl" target="blank">
+                  <div class="profile">
+                    <div class="thumb">
+                      <img :src="url.person.url + data.photo" alt="" />
+                    </div>
+                    <div class="name kor">{{ setWord(data.subject) }}</div>
                   </div>
-                  <div class="name kor">{{ setWord(data.subject) }}</div>
-                </div>
-                <div class="dept">{{ setWord(data.dept) }}</div>
-                <div class="pos">
-                  <span>직책: {{ setWord(data.jobposition) }}</span>
-                </div>
-                <div class="contact">
-                  <span>회사: {{ data.companytel }}</span>
-                  <span>휴대폰: {{ data.phone }}</span>
-                </div>
-                <div class="contact">
-                  <span>E-mail: {{ data.email }}</span>
-                </div>
-                <div class="work">
-                  <span>담당업무: {{ setWord(data.job) }}</span>
-                </div>
-              </a>
+                  <div class="dept">{{ setWord(data.dept) }}</div>
+                  <div class="pos">
+                    <span>직책: {{ setWord(data.jobposition) }}</span>
+                  </div>
+                  <div class="contact">
+                    <span>회사: {{ data.companytel }}</span>
+                    <span>휴대폰: {{ data.phone }}</span>
+                  </div>
+                  <div class="contact">
+                    <span>E-mail: {{ data.email }}</span>
+                  </div>
+                  <div class="work">
+                    <span>담당업무: {{ setWord(data.job) }}</span>
+                  </div>
+                </a>
+              </span>
+              <span v-else>
+                <a>
+                  <div class="profile">
+                    <div class="thumb">
+                      <img :src="url.person.url + data.photo" alt="" />
+                    </div>
+                    <div class="name kor">{{ setWord(data.subject) }}</div>
+                  </div>
+                  <div class="dept">{{ setWord(data.dept) }}</div>
+                  <div class="pos">
+                    <span>직책: {{ setWord(data.jobposition) }}</span>
+                  </div>
+                  <div class="contact">
+                    <span>회사: {{ data.companytel }}</span>
+                    <span>휴대폰: {{ data.phone }}</span>
+                  </div>
+                  <div class="contact">
+                    <span>E-mail: {{ data.email }}</span>
+                  </div>
+                  <div class="work">
+                    <span>담당업무: {{ setWord(data.job) }}</span>
+                  </div>
+                </a>
+              </span>
               <!-- </router-link> -->
             </li>
           </span>

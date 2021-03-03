@@ -298,7 +298,7 @@ export default {
         whatDate == null ||
         whatDate == ""
       ) {
-        whatDate = this.sortdata.gte;
+        whatDate = this.data.gte;
       }
 
       this.$store.dispatch("FilterData", {
@@ -353,7 +353,6 @@ export default {
       selected: (state) => state.languageoptionselected,
       language: (state) => state.language,
       options: (state) => state.languageoption,
-      sortdata: (state) => state.sortdata,
       data: (state) => state.data,
     }),
     category() {
@@ -398,6 +397,12 @@ export default {
       this.$store.dispatch("SearchWord", {
         word: getVars.q,
         category: path[0],
+      });
+    }
+    if ( uri .length <= 1) {
+      this.$store.dispatch("SearchWord", {
+        word: " ",
+        category: "allsearch",
       });
     }
   },

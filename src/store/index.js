@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
         searchwordarr: [], // AND 검색일 경우
         accOrrec: config.what[0],
         aOrd: config.defaultSort, // desc
-        class: '', // category (all은 전체검색)
+        class: 'allsearch', // category (all은 전체검색)
         pagenum: 0, // 보낼 데이터의 page
         check: false, // AND 검색을 하는지
         dateType: "all", // 날짜 필터 (all은 모든 날짜)

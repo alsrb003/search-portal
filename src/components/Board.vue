@@ -7,26 +7,50 @@
         <ul class="boardList">
           <span v-if="sortdata[category]">
             <li v-for="(data, index) in sortdata[category].data" :key="index">
-              <a>
-                <span
-                  class="attch"
-                  v-if="data.attached !== ''"
-                  :title="atta(data.attached)"
-                ></span>
-                <a
-                  :href="url[category].url + data.originalurl"
-                  target="blank"
-                  style="margin: 0; padding: 0"
-                >
-                  <span class="location">{{ setWord(data.nav) }}</span>
-                  <span class="subject">{{ data.subject }}</span>
-                  <span class="write"
-                    >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
-                    <span class="date">{{ getTime(data.created) }}</span></span
+              <span v-if="data.originalurl !== ''">
+                <a>
+                  <span
+                    class="attch"
+                    v-if="data.attached !== ''"
+                    :title="atta(data.attached)"
+                  ></span>
+                  <a
+                    :href="url[category].url + data.originalurl"
+                    target="blank"
+                    style="margin: 0; padding: 0"
                   >
-                  <span class="content">{{ data.body }}</span>
+                    <span class="location">{{ setWord(data.nav) }}</span>
+                    <span class="subject">{{ data.subject }}</span>
+                    <span class="write"
+                      >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
+                      <span class="date">{{
+                        getTime(data.created)
+                      }}</span></span
+                    >
+                    <span class="content">{{ data.body }}</span>
+                  </a>
                 </a>
-              </a>
+              </span>
+              <span v-else>
+                <a>
+                  <span
+                    class="attch"
+                    v-if="data.attached !== ''"
+                    :title="atta(data.attached)"
+                  ></span>
+                  <a style="margin: 0; padding: 0">
+                    <span class="location">{{ setWord(data.nav) }}</span>
+                    <span class="subject">{{ data.subject }}</span>
+                    <span class="write"
+                      >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
+                      <span class="date">{{
+                        getTime(data.created)
+                      }}</span></span
+                    >
+                    <span class="content">{{ data.body }}</span>
+                  </a>
+                </a>
+              </span>
             </li>
           </span>
 

@@ -1,4 +1,5 @@
 <template>
+
   <div class="pageContainer">
     <div class="pageContent">
       <section class="resultSection">
@@ -16,14 +17,26 @@
             <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
             <li v-for="(data, index) in personData.data" :key="index">
               <!-- <router-link :to="`/detail/${index} person`"> -->
-              <a :href="url.person.url + data.originalurl" target="blank">
-                <span class="thumb">
-                  <img :src="url.person.url + data.photo" alt="" />
-                  <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
-                </span>
-                <span class="name kor">{{ data.subject }}</span>
-                <span class="team">{{ setWord(data.dept) }}</span>
-              </a>
+              <span v-if="data.originalurl !== ''">
+                <a :href="url.person.url + data.originalurl" target="blank">
+                  <span class="thumb">
+                    <img :src="url.person.url + data.photo" alt="" />
+                    <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
+                  </span>
+                  <span class="name kor">{{ data.subject }}</span>
+                  <span class="team">{{ setWord(data.dept) }}</span>
+                </a>
+              </span>
+              <span v-else>
+                <a>
+                  <span class="thumb">
+                    <img :src="url.person.url + data.photo" alt="" />
+                    <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
+                  </span>
+                  <span class="name kor">{{ data.subject }}</span>
+                  <span class="team">{{ setWord(data.dept) }}</span>
+                </a>
+              </span>
               <!-- </router-link> -->
             </li>
           </span>
@@ -60,28 +73,52 @@
                   :key="index"
                 >
                   <!-- <router-link :to="`/detail/${index} approval`"> -->
-                  <a>
-                    <span
-                      class="attch"
-                      v-if="data.attached !== ''"
-                      :title="atta(data.attached)"
-                    ></span>
-                    <a
-                      :href="url[cate.id].url + data.originalurl"
-                      target="blank"
-                      style="margin: 0; padding: 0"
-                    >
-                      <span class="location">{{ setWord(data.nav) }}</span>
-                      <span class="subject">{{ data.subject }}</span>
-                      <span class="write"
-                        >{{ setWord(data.author) }} / {{ setWord(data.dept) }} /
-                        <span class="date">{{
-                          getTime(data.created)
-                        }}</span></span
+                  <span v-if="data.originalurl !== ''">
+                    <a>
+                      <span
+                        class="attch"
+                        v-if="data.attached !== ''"
+                        :title="atta(data.attached)"
+                      ></span>
+                      <a
+                        :href="url[cate.id].url + data.originalurl"
+                        target="blank"
+                        style="margin: 0; padding: 0"
                       >
-                      <span class="content">{{ data.body }}</span>
+                        <span class="location">{{ setWord(data.nav) }}</span>
+                        <span class="subject">{{ data.subject }}</span>
+                        <span class="write"
+                          >{{ setWord(data.author) }} /
+                          {{ setWord(data.dept) }} /
+                          <span class="date">{{
+                            getTime(data.created)
+                          }}</span></span
+                        >
+                        <span class="content">{{ data.body }}</span>
+                      </a>
                     </a>
-                  </a>
+                  </span>
+                  <span v-else>
+                    <a>
+                      <span
+                        class="attch"
+                        v-if="data.attached !== ''"
+                        :title="atta(data.attached)"
+                      ></span>
+                      <a style="margin: 0; padding: 0">
+                        <span class="location">{{ setWord(data.nav) }}</span>
+                        <span class="subject">{{ data.subject }}</span>
+                        <span class="write"
+                          >{{ setWord(data.author) }} /
+                          {{ setWord(data.dept) }} /
+                          <span class="date">{{
+                            getTime(data.created)
+                          }}</span></span
+                        >
+                        <span class="content">{{ data.body }}</span>
+                      </a>
+                    </a>
+                  </span>
                   <!-- </router-link> -->
                 </li>
               </span>
