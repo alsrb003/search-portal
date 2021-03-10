@@ -5,19 +5,19 @@
     },
     "person": {
       "id": "person",
-      "url": "http://swg60.saerom.co.kr/"
+      "url": "http://ktop.saerom.co.kr/"
     },
     "approval": {
       "id": "approval",
-      "url": "http://swg60.saerom.co.kr/"
+      "url": "http://kms.saerom.co.kr/"
     },
     "board": {
       "id": "board",
-      "url": "http://swg60.saerom.co.kr/"
+      "url": "http://ktop.saerom.co.kr/"
     },
     "mail": {
       "id": "mail",
-      "url": "http://swg60.saerom.co.kr/"
+      "url": "http://ktop.saerom.co.kr/"
     }
   },
   "defaultSize": 10,

@@ -70,24 +70,19 @@ export default {
         // total_cnt
         state.sortdata = result;
 
-        state.approData = state.sortdata.approval;
-        state.boardData = state.sortdata.board;
-        state.personData = state.sortdata.person;
-        state.mailData = state.sortdata.mail;
-
         // 전체 결과 건수
         state.sortdata.total_cnt = 0;
-        if (state.approData) {
-            state.sortdata.total_cnt += state.approData.total_cnt;
+        if (state.sortdata.approval) {
+            state.sortdata.total_cnt += state.sortdata.approval.total_cnt;
         }
-        if (state.boardData) {
-            state.sortdata.total_cnt += state.boardData.total_cnt;
+        if (state.sortdata.board) {
+            state.sortdata.total_cnt += state.sortdata.board.total_cnt;
         }
-        if (state.personData) {
-            state.sortdata.total_cnt += state.personData.total_cnt;
+        if (state.sortdata.person) {
+            state.sortdata.total_cnt += state.sortdata.person.total_cnt;
         }
-        if (state.mailData) {
-            state.sortdata.total_cnt += state.mailData.total_cnt;
+        if (state.sortdata.mail) {
+            state.sortdata.total_cnt += state.sortdata.mail.total_cnt;
         }
 
         // 새로운 데이터 별 바뀐 language
@@ -121,11 +116,6 @@ export default {
         state.data.pagenum = config.defaultPageNum - 1;
         state.data.size = config.defaultSize;
         state.nowpage = config.defaultNowPage;
-
-        state.approData = state.sortdata.approval;
-        state.boardData = state.sortdata.board;
-        state.personData = state.sortdata.person;
-        state.mailData = state.sortdata.mailData;
     },
     // 다국어
     LanguageData(state, { data }) {
@@ -138,6 +128,10 @@ export default {
     },
     NowPageChange(state, change) {
         state.nowpage = change;
+    },
+    // 자동완성
+    autoList(state, { relation }) {
+        state.autoList = relation;
     },
     // 시간 설정
     setTime(state) {

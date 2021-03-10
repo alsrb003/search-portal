@@ -1,8 +1,9 @@
-import { GetLanguage, Search, WeekMonth } from '../api/index.js';
+import { GetLanguage, Search, WeekMonth, Auto } from '../api/index.js';
 import config from '../config.json';
 export default {
     // 헤더에 있는 메뉴 클릭시 카테고리 변경
     BigCategory({ state, commit }, category) {
+        state.sortdata = {};
         state.tf = true;
         var data = state.data;
         data.pagenum = config.defaultPageNum - 1;
@@ -23,12 +24,12 @@ export default {
 
         return Search(data)
             .then(response => {
-                commit('BigCategory', { res: response.data, category: category });
-
                 commit('SearchData', {
                     res: response.data.data, word: state.data.searchword, page: state.data.pagenum,
                     replaceword: state.data.searchword, what: state.data.what, whatfield: state.data.whatfield
                 });
+
+                commit('BigCategory', { res: response.data, category: category });
 
                 state.tf = false;
             });
@@ -135,6 +136,45 @@ export default {
                 commit('SearchData', { what: what, whatfield: whatfield, res: response.data.data, replaceword: data.searchword });
             });
 
+    },
+    // 자동완성
+    autoComplete({ commit, state }, { word, category, timeStamp }) {
+        state.timeStamp = timeStamp;
+        if (typeof category == "undefined" ||
+            typeof category == undefined ||
+            category == null ||
+            category == "") {
+            // empty
+        } else {
+            state.data.class = category;
+        }
+        state.tf = true;
+        var data = state.data;
+        if (word !== undefined) {
+            data.searchword = word;
+        }
+
+        var pagenum = config.defaultPageNum - 1;
+        data.pagenum = pagenum;
+        data.term = state.term;
+
+        if (data.class === "allsearch") {
+            data.size = config.defaultHomeSize;
+            state.data.size = data.size;
+        }
+
+        commit('setTime');
+        data.current = state.current;
+        data.sessionId = state.sessionId;
+
+
+        return Auto(data)
+            .then(response => {
+                if (timeStamp === state.timeStamp) {
+                    commit('autoList', { relation: response.data });
+                }
+                state.tf = false;
+            });
     },
     // 페이지
     PageSearch({ commit, state }, { page, size }) {

@@ -30,9 +30,20 @@ function WeekMonth(data) {
         }
     })
 }
+function Auto(data) {
+    return axios({
+        method: 'post',
+        url: `/auto`,
+        data: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
 
 export {
     GetLanguage,
     Search,
     WeekMonth,
+    Auto,
 }

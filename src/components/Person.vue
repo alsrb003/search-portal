@@ -4,9 +4,9 @@
       <section class="resultSection">
         <h2 class="empInfoTitle">{{ language.person }}</h2>
         <ul class="empInfoList">
-          <span v-if="this.personData">
+          <span v-if="sortdata.person">
             <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
-            <li v-for="(data, index) in personData.data" :key="index">
+            <li v-for="(data, index) in sortdata.person.data" :key="index">
               <!-- <router-link :to="`/detail/${index} person`"> -->
               <span v-if="data.originalurl !== ''">
                 <a :href="url.person.url + data.originalurl" target="blank">
@@ -132,7 +132,6 @@ export default {
   computed: {
     ...mapState({
       sortdata: (state) => state.sortdata,
-      personData: (state) => state.personData,
       nowpage: (state) => state.nowpage,
       perpage: (state) => state.perpage,
       perpagecnt: (state) => state.perpagecnt,

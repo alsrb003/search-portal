@@ -35,6 +35,13 @@ module.exports = {
           '^/popular': ''
         }
       },
+      '/auto': {
+        target: 'http://localhost:4000/auto',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/auto': ''
+        }
+      },
     }
   },
 };

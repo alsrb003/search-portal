@@ -1,5 +1,6 @@
 <template>
   <header class="pageHeader">
+    <button @click="checkApi">{{ this.voice }}</button>
     <!-- <select @change="(e) => ChangeLanguage(e)">
       <option
         v-for="option in options"
@@ -15,21 +16,20 @@
           <input
             type="text"
             :placeholder="language.inputsearch"
-            @keyup.enter="btnSearch"
+            v-on:input="searchQuery = $event.target.value"
+            @keyup="autoComplete"
             v-model="data.searchword"
+            @focusin="focus(true)"
           />
+          <!-- @focusout="focus(false)" -->
         </div>
         <button type="submit" class="btnSearch" @click="btnSearch"></button>
         <div class="acKeywordBox">
-          <ul>
+          <ul v-for="(data, index) in autoList" :key="index">
             <li>
-              <a><em>플랫폼</em>1</a>
-            </li>
-            <li>
-              <a><em>플랫폼</em>2</a>
-            </li>
-            <li>
-              <a><em>플랫폼</em>3</a>
+              <a @click="wordClick(data.key)" :style="`background: ${data.bg}`"
+                ><em>{{ data.key }}</em></a
+              >
             </li>
           </ul>
         </div>
@@ -77,14 +77,13 @@
           </span> -->
 
           <span v-for="(item, index) in category" :key="index">
-            <li :class="{ on: CategoryOn(item.id) }">
-              <span @click="CategoryBtn(item.id)">
-                <router-link
-                  :to="`/ematesearch/${item.id}?q=${data.searchword}`"
-                >
-                  {{ language[item.id] }}
-                </router-link>
-              </span>
+            <li
+              :class="{ on: CategoryOn(item.id) }"
+              @click="CategoryBtn(item.id)"
+            >
+              <router-link :to="`/ematesearch/${item.id}?q=${data.searchword}`">
+                {{ language[item.id] }}
+              </router-link>
             </li>
           </span>
 
@@ -231,15 +230,70 @@ import { mapState } from "vuex";
 import config from "../config.json";
 import $ from "jquery";
 
+let qwe = null;
+
 export default {
   data() {
     return {
       searchname: "",
       startDate: "",
       endDate: "",
+      searchQuery: "",
+      fo: false,
+      cNum: 0,
+      runtimeTranscription: "",
+      transcription: [],
+      voice: "음성 검색",
     };
   },
   methods: {
+    checkApi() {
+      if (
+        typeof window.webkitSpeechRecognition == "undefined" ||
+        typeof window.webkitSpeechRecognition == undefined ||
+        window.webkitSpeechRecognition == null ||
+        window.webkitSpeechRecognition == ""
+      ) {
+        // 인터넷 익스플로러 음성 인식 X
+        alert("현재 브라우저에서 지원하지 않는 서비스입니다.     ");
+      } else {
+        if (this.voice == "듣는중") {
+          // empty
+          qwe.stop();
+        } else {
+          this.voice = "듣는중";
+          window.SpeechRecognition =
+            window.webkitSpeechRecognition || window.SpeechRecognition;
+          const recognition = new window.SpeechRecognition();
+          qwe = recognition;
+          recognition.lang = "ko-KR";
+          recognition.addEventListener("result", (event) => {
+            const text = Array.from(event.results)
+              .map((result) => result[0])
+              .map((result) => result.transcript)
+              .join("");
+            this.runtimeTranscription = text;
+          });
+          recognition.addEventListener("end", () => {
+            if (this.runtimeTranscription !== "") {
+              this.transcription.push(this.runtimeTranscription);
+              this.$store.dispatch("SearchWord", {
+                word: this.runtimeTranscription,
+                category: this.data.class,
+              });
+              this.runtimeTranscription = "";
+              recognition.stop();
+              alert("검색 성공!");
+            } else {
+              alert("종료!");
+            }
+            this.voice = "음성 검색";
+            // recognition.start();
+          });
+          recognition.start();
+        }
+      }
+    },
     CategoryOn(category) {
       // 카테고리에 따라서 하이라이트 주기
       var fullPath = this.$route.fullPath.split("/");
@@ -247,7 +301,19 @@ export default {
       if (path[0] == category) return true;
       else false;
     },
+    removeClass() {
+      // 자동완성 창 안보이게
+      var $search = $(".searchBox");
+      $search.removeClass("on");
+    },
+    addClass() {
+      // 자동완성 창 보이게
+      var $search = $(".searchBox");
+      $search.addClass("on");
+    },
     btnSearch() {
+      // 검색
+      this.removeClass();
       var word = this.data.searchword;
       word = word.trim();
       this.$store.dispatch("SearchWord", {
@@ -255,10 +321,90 @@ export default {
         category: this.data.class,
       });
     },
+    wordClick(word) {
+      // 자동완성 창에서 검색어 클릭시
+      this.removeClass();
+      word = word.trim();
+      this.$store.dispatch("SearchWord", {
+        word: word,
+        category: this.data.class,
+      });
+    },
     CategoryBtn(category) {
+      // 카테고리 메뉴 클릭시
+      this.removeClass();
       this.$store.dispatch("BigCategory", category);
     },
+    autoComplete(e) {
+      // 자동완성으로 연관검색어 가져오기
+      const now = new Date();
+      const timeStamp = Date.parse(now) + now.getMilliseconds();
+
+      for (var i = 0; i < this.autoList.length; i++) {
+        this.autoList[i].bg = "white";
+      }
+
+      if (e.keyCode == 13) {
+        // 엔터키
+        this.removeClass();
+        this.btnSearch();
+      } else if (e.keyCode == 27) {
+        // esc키
+        this.removeClass();
+        this.cNum = 0;
+      } else if (e.keyCode == 40) {
+        // 아래 방향키
+        if (this.autoList.length > 0) {
+          this.cNum++;
+          if (this.cNum >= 100) {
+            this.cNum = 0;
+          }
+          if (this.cNum >= this.autoList.length) {
+            this.cNum = -1;
+            this.data.searchword = "";
+          } else {
+            this.data.searchword = this.autoList[this.cNum].key;
+            this.autoList[this.cNum].bg = "#FFFF00";
+          }
+        }
+        this.searchQuery = this.data.searchword;
+      } else if (e.keyCode == 38) {
+        // 위 방향키
+        if (this.autoList.length > 0) {
+          this.cNum--;
+          if (this.cNum < -1 || this.cNum >= 90) {
+            this.cNum = this.autoList.length - 1;
+          } else if (this.cNum == -1) {
+            this.data.searchword = "";
+          }
+          if (this.cNum >= 0) {
+            this.data.searchword = this.autoList[this.cNum].key;
+            this.autoList[this.cNum].bg = "#FFFF00";
+          }
+        }
+        this.searchQuery = this.data.searchword;
+      } else {
+        // 연관검색어
+        this.cNum = 100;
+        this.addClass();
+        var word = this.searchQuery;
+        this.$store.dispatch("autoComplete", {
+          word: word,
+          category: this.data.class,
+          timeStamp: timeStamp,
+        });
+      }
+    },
+    focus(value) {
+      this.fo = value;
+      if (this.fo == true) {
+        this.addClass();
+      } else {
+        this.removeClass();
+      }
+    },
     SortBtn(it, fieldname, whatDate) {
+      // 정렬, 필터 클릭시
       var id = this.$route.params.id;
 
       var moment = require("moment");
@@ -318,6 +464,7 @@ export default {
     //   this.$store.dispatch("LanguageFetchData", value);
     // },
     ResearchCheck(e) {
+      // 결과내 재검색
       var checked = e.target.checked;
       this.$store.commit("ResearchCheck", checked);
     },
@@ -354,6 +501,7 @@ export default {
       language: (state) => state.language,
       options: (state) => state.languageoption,
       data: (state) => state.data,
+      autoList: (state) => state.autoList,
     }),
     category() {
       return config.category;
@@ -380,6 +528,7 @@ export default {
     // q = q.trim();
     // this.$store.dispatch("SearchWord", { word: q });
 
+    // 처음 시작시 검색어 받아와서 검색
     let uri = window.location.href.split("?");
     if (uri.length == 2) {
       let vars = uri[1].split("&");
@@ -399,13 +548,14 @@ export default {
         category: path[0],
       });
     }
-    if ( uri .length <= 1) {
+    if (uri.length <= 1) {
       this.$store.dispatch("SearchWord", {
         word: " ",
         category: "allsearch",
       });
     }
   },
+  // 뒤로가기
   watch: {
     // to, from
     $route(to) {

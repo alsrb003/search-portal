@@ -1,5 +1,4 @@
 <template>
-
   <div class="pageContainer">
     <div class="pageContent">
       <section class="resultSection">
@@ -13,9 +12,9 @@
           </router-link>
         </h2>
         <ul class="employeeList">
-          <span v-if="this.personData">
+          <span v-if="this.sortdata.person">
             <!-- <span v-if="Array.isArray(this.sortdata.category.approval) && this.sortdata.category.approval.length>0"> -->
-            <li v-for="(data, index) in personData.data" :key="index">
+            <li v-for="(data, index) in this.sortdata.person.data" :key="index">
               <!-- <router-link :to="`/detail/${index} person`"> -->
               <span v-if="data.originalurl !== ''">
                 <a :href="url.person.url + data.originalurl" target="blank">
@@ -64,6 +63,10 @@
                   {{ language[cate.id] }}
                 </span>
               </router-link>
+              <span v-if="sortdata[cate.id]">
+                ( {{ sortdata[cate.id].total_cnt }} )
+              </span>
+              <span v-else>/ ( 0 ) </span>
             </h2>
             <ul class="boardList">
               <span v-if="sortdata[cate.id]">
@@ -152,9 +155,6 @@ export default {
     ...mapState({
       language: (state) => state.language,
       sortdata: (state) => state.sortdata,
-      approData: (state) => state.approData,
-      boardData: (state) => state.boardData,
-      personData: (state) => state.personData,
       data: (state) => state.data,
     }),
     category() {
