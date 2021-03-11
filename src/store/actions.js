@@ -170,8 +170,13 @@ export default {
 
         return Auto(data)
             .then(response => {
-                if (timeStamp === state.timeStamp) {
-                    commit('autoList', { relation: response.data });
+                if (response.data.Success === false) {
+                    // empty
+                    state.autoList = {};
+                } else {
+                    if (timeStamp === state.timeStamp) {
+                        commit('autoList', { relation: response.data });
+                    }
                 }
                 state.tf = false;
             });

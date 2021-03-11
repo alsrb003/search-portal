@@ -33,7 +33,7 @@ function WeekMonth(data) {
 function Auto(data) {
     return axios({
         method: 'post',
-        url: `/auto`,
+        url: `/searchauto`,
         data: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'

@@ -1,7 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/emate_search/'
-    : '/',
+  publicPath: '/',
   configureWebpack: {
     entry: ["babel-polyfill", "./src/main.js"],
   },
@@ -35,11 +33,11 @@ module.exports = {
           '^/popular': ''
         }
       },
-      '/auto': {
+      '/searchauto': {
         target: 'http://localhost:4000/auto',
         changeOrigin: true,
         pathRewrite: {
-          '^/auto': ''
+          '^/searchauto': ''
         }
       },
     }
