@@ -27,7 +27,7 @@ const routes = [
     component: Person,
     children: [
       {
-        name: 'page',
+        name: 'personpage',
         path: 'page',
         // component: BoardList,
         // props: true,
@@ -47,7 +47,7 @@ const routes = [
     component: Board,
     children: [
       {
-        name: 'page',
+        name: 'boardpage',
         path: 'page',
         // component: BoardList,
         // props: true,
@@ -63,11 +63,11 @@ const routes = [
   },
   {
     path: '/ematesearch/approval',
-    name: 'Board',
+    name: 'Approval',
     component: Board,
     children: [
       {
-        name: 'page',
+        name: 'approvalpage',
         path: 'page',
         // component: BoardList,
         // props: true,
@@ -82,12 +82,12 @@ const routes = [
     ]
   },
   {
-    path: '/ematesearch/mail',
-    name: 'Board',
+    path: '/ematesearch/research',
+    name: 'Research',
     component: Board,
     children: [
       {
-        name: 'page',
+        name: 'researchpage',
         path: 'page',
         // component: BoardList,
         // props: true,

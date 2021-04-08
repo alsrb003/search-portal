@@ -1,6 +1,6 @@
 <template>
   <header class="pageHeader">
-    <button @click="checkApi">{{ this.voice }}</button>
+    <!-- <button @click="checkApi">{{ this.voice }}</button> -->
     <!-- <select @change="(e) => ChangeLanguage(e)">
       <option
         v-for="option in options"
@@ -77,13 +77,17 @@
           </span> -->
 
           <span v-for="(item, index) in category" :key="index">
-            <li
-              :class="{ on: CategoryOn(item.id) }"
-              @click="CategoryBtn(item.id)"
-            >
-              <router-link :to="`/ematesearch/${item.id}?q=${data.searchword}`">
-                {{ language[item.id] }}
-              </router-link>
+            <li>
+              <span
+                :class="{ on: CategoryOn(item.id) }"
+                @click="CategoryBtn(item.id)"
+              >
+                <router-link
+                  :to="`/ematesearch/${item.id}?q=${data.searchword}`"
+                >
+                  {{ language[item.id] }}
+                </router-link>
+              </span>
             </li>
           </span>
 

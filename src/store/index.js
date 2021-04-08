@@ -8,18 +8,18 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        timeStamp: 0,
-        tf: false,
+        timeStamp: 0, // 자동완성할 때, 입력한 시간 체크
+        tf: false, // 로딩화면 온오프
         sessionId: "",
         current: "",
         rList: {}, // 관련검색어
         kList: {}, // 인기검색어
         term: "thisWeek", // 인기검색어 필터
         sortdata: {}, // 받아온 전체 데이터
-        autoList: {},
+        autoList: {}, // 자동완성 검색 결과
         data: {
             from: 1, // 받아온 데이터의 page
-            size: config.defaultSize,
+            size: config.defaultSize, // 게시물 몇 개씩 보여줄건지
             fieldname: config.what[2],
             searchword: " ",
             searchwordarr: [], // AND 검색일 경우
@@ -39,7 +39,7 @@ export const store = new Vuex.Store({
         languageoption: config.options,
         languageoptionselected: "ko",
         replaceword: { count: 0, word: "" },
-        // 전자결제 페이지
+        // 페이지 번호 처리 관련 변수들
         nowpage: 1,
         totalpage: 0,
         remainder: 0,

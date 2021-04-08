@@ -13,6 +13,8 @@ export default {
         } else {
             data.size = config.defaultSize;
         }
+        state.data.size = data.size;
+
         data.class = category;
 
         state.data.class = category;
@@ -77,8 +79,10 @@ export default {
 
         if (data.class === "allsearch") {
             data.size = config.defaultHomeSize;
-            state.data.size = data.size;
+        }else{
+            data.size = config.defaultHSize;
         }
+        state.data.size = data.size;
 
         commit('setTime');
         data.current = state.current;

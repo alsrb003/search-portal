@@ -81,8 +81,8 @@ export default {
         if (state.sortdata.person) {
             state.sortdata.total_cnt += state.sortdata.person.total_cnt;
         }
-        if (state.sortdata.mail) {
-            state.sortdata.total_cnt += state.sortdata.mail.total_cnt;
+        if (state.sortdata.research) {
+            state.sortdata.total_cnt += state.sortdata.research.total_cnt;
         }
 
         // 새로운 데이터 별 바뀐 language
@@ -114,7 +114,6 @@ export default {
         state.sortdata = res.data;
         state.data.class = category;
         state.data.pagenum = config.defaultPageNum - 1;
-        state.data.size = config.defaultSize;
         state.nowpage = config.defaultNowPage;
     },
     // 다국어
@@ -129,7 +128,7 @@ export default {
     NowPageChange(state, change) {
         state.nowpage = change;
     },
-    // 자동완성
+    // 자동완성 검색 결과
     autoList(state, { relation }) {
         state.autoList = relation;
     },
@@ -149,7 +148,7 @@ export default {
     // 검색시 인기검색어, 관련검색어 가져오기
     setList(state, { popular, relation }) {
         state.kList = popular;
-        
+
         for (var k = 0; k < relation.length; k++) {
             if (relation[k].key === state.data.searchword) {
                 relation.splice(k, 1);

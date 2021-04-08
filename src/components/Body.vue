@@ -19,7 +19,8 @@
               <span v-if="data.originalurl !== ''">
                 <a :href="url.person.url + data.originalurl" target="blank">
                   <span class="thumb">
-                    <img :src="url.person.url + data.photo" alt="" />
+                    <!-- <img :src="url.person.url + data.photo" alt="" /> -->
+                    <img src="@/portal/images/no_photo.png" alt="" />
                     <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
                   </span>
                   <span class="name kor">{{ data.subject }}</span>
@@ -29,7 +30,8 @@
               <span v-else>
                 <a>
                   <span class="thumb">
-                    <img :src="url.person.url + data.photo" alt="" />
+                    <!-- <img :src="url.person.url + data.photo" alt="" /> -->
+                    <img src="@/portal/images/no_photo.png" alt="" />
                     <!-- onerror="this.src='http://kms.saerom.co.kr/lib/photo/219009.jpg';" -->
                   </span>
                   <span class="name kor">{{ data.subject }}</span>
@@ -192,6 +194,7 @@ export default {
       return word;
     },
     atta(list) {
+      // 첨부파일 한 개인지 아닌지
       var text = "";
       if (Array.isArray(list)) {
         for (var i = 0; i < list.length; i++) {

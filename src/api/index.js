@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+// 언어
 function GetLanguage(data) {
     return axios({
         method: 'post',
@@ -10,6 +10,7 @@ function GetLanguage(data) {
         }
     })
 }
+// 검색
 function Search(data) {
     return axios({
         method: 'post',
@@ -20,6 +21,7 @@ function Search(data) {
         }
     })
 }
+// 인기검색어
 function WeekMonth(data) {
     return axios({
         method: 'post',
@@ -30,6 +32,7 @@ function WeekMonth(data) {
         }
     })
 }
+// 자동완성
 function Auto(data) {
     return axios({
         method: 'post',

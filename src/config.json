@@ -5,19 +5,19 @@
     },
     "person": {
       "id": "person",
-      "url": "http://ktop.saerom.co.kr/"
+      "url": "http://koll.klri.re.kr/"
     },
     "approval": {
       "id": "approval",
-      "url": "http://kms.saerom.co.kr/"
+      "url": "http://koll.klri.re.kr/"
     },
     "board": {
       "id": "board",
-      "url": "http://ktop.saerom.co.kr/"
+      "url": "http://koll.klri.re.kr/"
     },
-    "mail": {
-      "id": "mail",
-      "url": "http://ktop.saerom.co.kr/"
+    "research": {
+      "id": "research",
+      "url": "http://koll.klri.re.kr/"
     }
   },
   "defaultSize": 10,

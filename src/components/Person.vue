@@ -12,7 +12,8 @@
                 <a :href="url.person.url + data.originalurl" target="blank">
                   <div class="profile">
                     <div class="thumb">
-                      <img :src="url.person.url + data.photo" alt="" />
+                      <!-- <img :src="url.person.url + data.photo" alt="" /> -->
+                      <img src="@/portal/images/no_photo.png" />
                     </div>
                     <div class="name kor">{{ setWord(data.subject) }}</div>
                   </div>
@@ -36,7 +37,8 @@
                 <a>
                   <div class="profile">
                     <div class="thumb">
-                      <img :src="url.person.url + data.photo" alt="" />
+                      <!-- <img :src="url.person.url + data.photo" alt="" /> -->
+                      <img src="@/portal/images/no_photo.png" />
                     </div>
                     <div class="name kor">{{ setWord(data.subject) }}</div>
                   </div>
@@ -62,7 +64,7 @@
         </ul>
         <div class="pagination">
           <!-- {{ sortdata.total_cnt }}
-{{ nowpage }} -->
+            {{ nowpage }} -->
           <ul>
             <span v-if="!(this.nowpage == 1)">
               <li>

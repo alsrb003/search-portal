@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import testa from './js/jquery';
-import testb from './js/jquery-ui';
+// import testa from './js/jquery';
+// import testb from './js/jquery-ui';
 import testc from './portal/js/test2';
 import testd from './portal/js/test';
 import Header from "./components/Header";
@@ -20,7 +20,7 @@ import Spinner from "./components/Spinner.vue";
 import { mapState } from "vuex";
 
 export default {
-  mixin: [testa, testb, testc, testd],
+  mixin: [testc, testd],
   name: "App",
   computed: {
     ...mapState({
